@@ -1,13 +1,3 @@
-+++
-title = "Cosos2dx fmod 声音引擎集成"
-author = ["semgilo"]
-date = 2018-11-22T15:17:00+08:00
-lastmod = 2019-01-08T10:16:54+08:00
-tags = ["Cocos2dx", "fmod", "audioengine"]
-categories = ["分享"]
-draft = false
-+++
-
 <div class="ox-hugo-toc toc">
 <div></div>
 
@@ -248,3 +238,6 @@ engine:releaseSound(path)
 
 ### 在FMODAudioEngine类中记得添加CC\_DLL（动态库导出标记） {#在fmodaudioengine类中记得添加cc-dll-动态库导出标记}
 
+## 联系
+semgilo@gmail.com
+QQ:9737935
