@@ -1,6 +1,6 @@
 ## Environment
-
 Cocos2d-x: 3.17
+
 [fmod](https://fmod.com/resources/documentation-api?page=content/generated/common/introduction%5Fweb.html#/)
 
 ## Config
@@ -46,8 +46,7 @@ bool LuaStack::init(void)
 
 
 #### Add files
-
-{{< figure src="/images/fmod/win/add_engine.png" >}}
+![](/images/fmod/win/add_engine.png)
 
 
 #### Config libs
@@ -56,13 +55,10 @@ bool LuaStack::init(void)
 ![](/images/fmod/win/add_libs.png)
 
 
-### ios {#ios}
-
+### ios
 
 #### Config libs
-
-{{< figure src="/images/fmod/ios/add_lib.png" >}}
-
+![](/images/fmod/ios/add_lib.png)
 
 #### Config search path
 
@@ -83,11 +79,8 @@ bool LuaStack::init(void)
 
 ### android 
 
-
 #### Add .jar and .so files to Android Studio 
-
-</images/fmod/android/add_libs>
-
+![](/images/fmod/android/add_libs.png)
 
 #### Modify AppActivity.java
 
