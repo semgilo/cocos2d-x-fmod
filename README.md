@@ -1,61 +1,37 @@
-<div class="ox-hugo-toc toc">
-<div></div>
-
-<div class="heading">Table of Contents</div>
-
-- [环境](#环境)
-- [配置](#配置)
-    - [文件](#文件)
-    - [win32](#win32)
-    - [ios](#ios)
-    - [android](#android)
-- [lua中使用](#lua中使用)
-- [备注](#备注)
-    - [在FMODAudioEngine类中记得添加CC\_DLL（动态库导出标记）](#在fmodaudioengine类中记得添加cc-dll-动态库导出标记)
-
-</div>
-<!--endtoc-->
-
-
-
-## 环境 {#环境}
+## Environment
 
 Cocos2d-x: 3.17
+[fmod](https://fmod.com/resources/documentation-api?page=content/generated/common/introduction%5Fweb.html#/)
 
-[fmod官方文档](https://fmod.com/resources/documentation-api?page=content/generated/common/introduction%5Fweb.html#/)
-
-[教程文件](https://github.com/semgilo/cocos2d-x-fmod)
-
-
-## 配置 {#配置}
+## Config
 
 
-### 文件 {#文件}
+### Files
 
 
-#### 拷贝fmod文件夹 {#拷贝fmod文件夹}
+#### Copy dir to your project
 
 ```c++
 frameworks⁩ ▸ ⁨cocos2d-x⁩ ▸ external
 ```
 
 
-#### 拷贝lua导出文件lua\_fmod\_auto.hpp和lua\_fmod\_auto.cpp {#拷贝lua导出文件lua-fmod-auto-dot-hpp和lua-fmod-auto-dot-cpp}
+#### Copy lua\_fmod\_auto.hpp和lua\_fmod\_auto.cpp to your project
 
 ```c++
 frameworks⁩ ▸ ⁨cocos2d-x⁩ ▸ cocos ▸ scripting ▸ lua-bindings ▸ auto
 ```
 
 
-#### 修改CCLuaStack.cpp {#修改ccluastack-dot-cpp}
+#### Modify CCLuaStack.cpp
 
-文件路径：frameworks⁩ ▸ ⁨cocos2d-x⁩ ▸ cocos ▸ scripting ▸ lua-bindings ▸ munual
+path：frameworks⁩ ▸ ⁨cocos2d-x⁩ ▸ cocos ▸ scripting ▸ lua-bindings ▸ munual
 
 ```c++
-// 1.添加引用
+// 1.include lua_fmod_auto.hpp file
 #include "scripting/lua-bindings/auto/lua_fmod_auto.hpp"
 
-// 2.添加导入
+// 2.register 
 bool LuaStack::init(void)
 {
     ...
@@ -66,15 +42,15 @@ bool LuaStack::init(void)
 ```
 
 
-### win32 {#win32}
+### win32
 
 
-#### 添加代码到工程 {#添加代码到工程}
+#### Add files
 
 {{< figure src="/images/fmod/win/add_engine.png" >}}
 
 
-#### 配置libs {#配置libs}
+#### Config libs
 
 ![](/images/fmod/win/add_lib_search_path.png)
 ![](/images/fmod/win/add_libs.png)
@@ -83,12 +59,12 @@ bool LuaStack::init(void)
 ### ios {#ios}
 
 
-#### 配置静态库 {#配置静态库}
+#### Config libs
 
 {{< figure src="/images/fmod/ios/add_lib.png" >}}
 
 
-#### 配置搜索路径 {#配置搜索路径}
+#### Config search path
 
 ```c++
 1.cocos2d_libs.xcodeproj ▸ ⁨build setting ▸ ⁨User Header Search Paths
@@ -99,21 +75,21 @@ bool LuaStack::init(void)
 ```
 
 
-#### 配置代码文件 {#配置代码文件}
+#### Add source file to XcodeProject 
 
 ![](/images/fmod/ios/add_files.png)
 ![](/images/fmod/ios/add_lua_files.png)
 
 
-### android {#android}
+### android 
 
 
-#### 添加jar和so文件到工程 {#添加jar和so文件到工程}
+#### Add .jar and .so files to Android Studio 
 
 </images/fmod/android/add_libs>
 
 
-#### 添加代码到AppActivity.java {#添加代码到appactivity-dot-java}
+#### Modify AppActivity.java
 
 ```java
 package org.cocos2dx.lua;
@@ -155,7 +131,7 @@ public class AppActivity extends Cocos2dxActivity{
 ```
 
 
-#### 添加lua导出文件到android.mk文件 {#添加lua导出文件到android-dot-mk文件}
+#### Modify lua-bindings android.mk
 
 ```java
 ⁨frameworks⁩ ▸ ⁨cocos2d-x⁩ ▸ ⁨cocos⁩ ▸ ⁨scripting⁩ ▸ ⁨lua-bindings⁩ ▸ android.mk
@@ -165,7 +141,7 @@ LOCAL_SRC_FILES += ../auto/lua_fmod_auto.cpp \
 ```
 
 
-#### 添加fmod模块到cocos的android.mk文件 {#添加fmod模块到cocos的android-dot-mk文件}
+#### Modify cocos android.mk
 
 ```java
 frameworks⁩ ▸ ⁨cocos2d-x⁩ ▸ ⁨cocos⁩ ▸  android.mk
@@ -177,7 +153,7 @@ $(call import-module,fmod/prebuilt/android)
 ```
 
 
-#### fmod模块的android.mk文件的内容 {#fmod模块的android-dot-mk文件的内容}
+#### fmod android.mk
 
 ```java
 LOCAL_PATH := $(call my-dir)
@@ -209,7 +185,7 @@ include $(BUILD_STATIC_LIBRARY)
 ```
 
 
-## lua中使用 {#lua中使用}
+## Using in lua
 
 ```lua
 engine = fmod.FMODAudioengine:getInstance()
@@ -233,11 +209,9 @@ engine:releaseSound(path)
 ```
 
 
-## 备注 {#备注}
-
-
-### 在FMODAudioEngine类中记得添加CC\_DLL（动态库导出标记） {#在fmodaudioengine类中记得添加cc-dll-动态库导出标记}
-
-## 联系
+## Contact
 semgilo@gmail.com
 QQ:9737935
+
+## Chinese doc
+http://www.lanhuzi/blog/cocos2dx-fmod-integrating/
